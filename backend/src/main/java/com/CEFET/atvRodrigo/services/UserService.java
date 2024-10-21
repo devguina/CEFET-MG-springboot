@@ -21,6 +21,7 @@ public class UserService {
     public User addUser(UserRecordDTO dto){
         User user = new User();
         BeanUtils.copyProperties(dto, user);
+        user.setActive(true);
         return repository.save(user);
     }
 
