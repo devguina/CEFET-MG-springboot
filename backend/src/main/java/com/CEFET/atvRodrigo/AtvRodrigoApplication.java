@@ -9,5 +9,6 @@ public class AtvRodrigoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AtvRodrigoApplication.class, args);
 	}
-
+/*TODO
+*  fazer o flyway funcionar a migração, gerando com ddl para conferir oq foi feito, alterar o yaml*/
 }

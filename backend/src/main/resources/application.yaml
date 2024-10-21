@@ -11,15 +11,12 @@ spring:
     username: postgres
     password: 123456
     url: jdbc:postgresql://localhost:5429/cefet
+    driver-class-name: org.postgresql.Driver
 
   jpa:
+    hibernate:
+      ddl-auto: update  # Opções: create, create-drop, update, validate, none
+    show-sql: true  # Exibe as queries SQL no console
     properties:
-      show-sql: true
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-
-flyway:
-  baselineOnMigrate: true
-  check-location: true
-  schemas: public
-  enabled: true
