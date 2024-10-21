@@ -1,0 +1,30 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /CEFET
+
+spring:
+  application:
+    name: atvRodrigo
+
+  datasource:
+    username: postgres
+    password: 123456
+    url: jdbc:postgresql://localhost:5429/cefet
+
+jpa:
+  properties:
+    show-sql: true
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQlDialect
+
+#flyway:
+#  baselineOnMigrate: true
+#  check-location: true
+#  schemas: public
+#  enable: true
+
+
+
+
+
