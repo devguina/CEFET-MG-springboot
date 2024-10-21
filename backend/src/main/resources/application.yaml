@@ -12,19 +12,14 @@ spring:
     password: 123456
     url: jdbc:postgresql://localhost:5429/cefet
 
-jpa:
-  properties:
-    show-sql: true
-    hibernate:
-      dialect: org.hibernate.dialect.PostgreSQlDialect
+  jpa:
+    properties:
+      show-sql: true
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
-#flyway:
-#  baselineOnMigrate: true
-#  check-location: true
-#  schemas: public
-#  enable: true
-
-
-
-
-
+flyway:
+  baselineOnMigrate: true
+  check-location: true
+  schemas: public
+  enabled: true
