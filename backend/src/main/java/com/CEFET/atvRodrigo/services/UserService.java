@@ -5,9 +5,8 @@ import com.CEFET.atvRodrigo.models.User;
 import com.CEFET.atvRodrigo.repositories.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +18,8 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    //POST
+    //add user
+    @Transactional
     public User addUser(UserRecordDTO dto) {
         User user = new User();
         BeanUtils.copyProperties(dto, user);
@@ -27,20 +27,31 @@ public class UserService {
         return repository.save(user);
     }
 
-    public List<User> allUsers() {
+    // return all users
+    @Transactional
+    public List<User> findAll() {
         return repository.findAll();
     }
 
-    public Optional<User> getUser(UUID id) {
+    // return N users by name
+    @Transactional
+    public List<User> findUserByName(String name){
+        return repository.findByName(name);
+    }
+
+    // return user by id
+    public Optional<User> findUserById(UUID id) {
         Optional<User> userOptional = repository.findById(id);
         return repository.findById(id);
     }
 
-    public void deleteUser(UUID id) {
+    // delete user by id
+    public void deleteUserById(UUID id) {
         repository.deleteById(id);
     }
 
-    public User updateUser(UUID id, UserRecordDTO dto) {
+    // update user by id
+    public User updateUserById(UUID id, UserRecordDTO dto) {
         Optional<User> userOptional = repository.findById(id);
         if (userOptional.isPresent()){
             User user1 = new User();

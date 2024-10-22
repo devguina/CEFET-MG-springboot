@@ -19,7 +19,7 @@ public class User {
     private UUID id;
     @Column(name = "name", nullable = false)
     private String name;
-    @Column(name = "login", nullable = false)
+    @Column(name = "login", nullable = false, unique = true)
     private String login;
     @Column(name = "password", nullable = false)
     private String password;

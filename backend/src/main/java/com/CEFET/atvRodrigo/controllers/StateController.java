@@ -2,16 +2,12 @@ package com.CEFET.atvRodrigo.controllers;
 
 import com.CEFET.atvRodrigo.RecordsDTO.StateRecordDTO;
 import com.CEFET.atvRodrigo.models.State;
-import com.CEFET.atvRodrigo.repositories.StateRepository;
 import com.CEFET.atvRodrigo.services.StateService;
-import org.apache.tomcat.util.http.parser.HttpParser;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.beans.Beans;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -30,8 +26,15 @@ public class StateController {
         return new ResponseEntity<>(states, HttpStatus.OK);
     }
 
+    //GET BY NAME
+    @GetMapping(value = "/name/{name}")
+    public ResponseEntity<?> stateName(@PathVariable String name) {
+        List<State> states = service.findByName(name);
+        return new ResponseEntity<>(states, HttpStatus.OK);
+    }
+
     //GET BY ID
-    @GetMapping(value = "/{îd}")
+    @GetMapping(value = "/{id}")
     public ResponseEntity<?> getState(@PathVariable UUID id){
         Optional<State> stateOptional = service.getState(id);
         if(stateOptional.isPresent()){

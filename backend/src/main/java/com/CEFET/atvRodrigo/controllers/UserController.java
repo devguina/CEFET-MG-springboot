@@ -30,14 +30,14 @@ public class UserController {
     //GET ALL
     @GetMapping(value = "/")
     public ResponseEntity<List<User>> getAllUser() {
-        List<User> allUsers = userService.allUsers();
+        List<User> allUsers = userService.findAll();
         return new ResponseEntity<>(allUsers, HttpStatus.OK);
     }
 
     //GET BY ID
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/id/{id}")
     public ResponseEntity<?> getUser(@PathVariable UUID id) {
-        Optional<User> userOptional = userService.getUser(id);
+        Optional<User> userOptional = userService.findUserById(id);
         if (userOptional.isPresent()) {
             return ResponseEntity.ok(userOptional.get());
         } else {
@@ -45,11 +45,17 @@ public class UserController {
         }
     }
 
+    @GetMapping(value = "/name/{id}")
+    public ResponseEntity<?> getUserByName(@PathVariable String name){
+        List<User> users = userService.findUserByName(name);
+        return new ResponseEntity<>(users,HttpStatus.OK);
+    }
+
     //PUT BY ID
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> putUser(@PathVariable UUID id,
                                      @RequestBody @Valid UserRecordDTO dto) {
-        User user = userService.updateUser(id, dto);
+        User user = userService.updateUserById(id, dto);
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 
@@ -57,9 +63,9 @@ public class UserController {
     //DELET BY ID
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable UUID id) {
-        Optional<User> userOptional = userService.getUser(id);
+        Optional<User> userOptional = userService.findUserById(id);
         if (userOptional.isPresent()) {
-            userService.deleteUser(id);
+            userService.deleteUserById(id);
             return ResponseEntity.status(HttpStatus.OK).body("User exclued successfully");
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not Found by id: " + id);
