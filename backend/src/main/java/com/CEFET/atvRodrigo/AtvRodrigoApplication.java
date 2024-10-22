@@ -10,5 +10,5 @@ public class AtvRodrigoApplication {
 		SpringApplication.run(AtvRodrigoApplication.class, args);
 	}
 /*TODO
-*  fazer o flyway funcionar a migração, gerando com ddl para conferir oq foi feito, alterar o yaml*/
+*  gerar script para popular entity state e ajustar as classes state e city e seus relacionamentos*/
 }

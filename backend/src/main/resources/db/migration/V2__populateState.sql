@@ -1,0 +1,28 @@
+---- Inserção dos estados brasileiros na tabela 'tb_state' com nomes e abreviações em caixa alta
+--INSERT INTO tb_state (name, abbreviation) VALUES ('ACRE', 'AC');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('ALAGOAS', 'AL');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('AMAPÁ', 'AP');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('AMAZONAS', 'AM');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('BAHIA', 'BA');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('CEARÁ', 'CE');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('DISTRITO FEDERAL', 'DF');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('ESPÍRITO SANTO', 'ES');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('GOIÁS', 'GO');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('MARANHÃO', 'MA');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('MATO GROSSO', 'MT');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('MATO GROSSO DO SUL', 'MS');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('MINAS GERAIS', 'MG');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('PARÁ', 'PA');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('PARAÍBA', 'PB');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('PARANÁ', 'PR');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('PERNAMBUCO', 'PE');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('PIAUÍ', 'PI');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('RIO DE JANEIRO', 'RJ');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('RIO GRANDE DO NORTE', 'RN');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('RIO GRANDE DO SUL', 'RS');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('RONDÔNIA', 'RO');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('RORAIMA', 'RR');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('SANTA CATARINA', 'SC');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('SÃO PAULO', 'SP');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('SERGIPE', 'SE');
+--INSERT INTO tb_state (name, abbreviation) VALUES ('TOCANTINS', 'TO');

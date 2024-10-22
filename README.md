@@ -42,5 +42,20 @@ Follow the steps below to run the application correctly:
 example request: localhost:${port}/CEFET/user/{id}
 
 ---------------------
-- StateController
+- StateController = /state
+- - GET = /{id}
+- - GET ALL = /
+- - POST = /
+- - PUT = /{id}
+- - DELETE = /{id}
+
+example request: localhost:${port}/CEFET/state/{id}
+
+----
+    {
+    "nanme" : "Example",
+    "abbreviation" : "ex-ample"
+    }
     
+
+-

@@ -15,8 +15,13 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update  # Opções: create, create-drop, update, validate, none
+    # ddl-auto: update  # Desabilitado para usar o Flyway no gerenciamento do schema
     show-sql: true  # Exibe as queries SQL no console
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  flyway:
+    enabled: true  # Habilita o Flyway
+    locations: classpath:db/migration  # Caminho onde estÃ£o os scripts de migraÃ§Ã£o Flyway
+    baseline-on-migrate: true  # Garante que o Flyway considera o estado inicial
