@@ -26,3 +26,21 @@ Follow the steps below to run the application correctly:
 #### Entities 
 
 #### Ending-points
+- base: /CEFET
+- UserController = /user
+- - GET = /{id}
+- - GET ALL = /
+- - POST = /{id}
+- - PUT = /{id}
+- - DELETE = /{id}
+
+        {
+        "name" : "exampleName",
+        "login" : "exampeLogin",
+        "password" : "examplePassword"
+        }
+example request: localhost:${port}/CEFET/user/{id}
+
+---------------------
+- StateController
+    
