@@ -23,21 +23,21 @@ public class ClienteController {
     //GET ALL
     @GetMapping(value = "/")
     public ResponseEntity<List<Client>> getAll() {
-        List<Client> clients = service.findAll();
+        List<Client> clients = service.findAllClients();
         return ResponseEntity.status(HttpStatus.OK).body(clients);
     }
 
     //GET BY NAME
     @GetMapping(value = "/name/{name}")
     public ResponseEntity<?> getByName(@PathVariable String name){
-        List<Client> clientes = service.findByName(name);
+        List<Client> clientes = service.findByClientByName(name);
         return new ResponseEntity<>(clientes, HttpStatus.OK);
     }
 
     //GET ID
     @GetMapping(value = "/id/{id}")
     public ResponseEntity<?> getById(@PathVariable UUID id) {
-        Optional<Client> clientOptional = service.findById(id);
+        Optional<Client> clientOptional = service.findClientById(id);
         if (clientOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.OK).body(clientOptional);
         }
@@ -54,7 +54,7 @@ public class ClienteController {
     //DELETE BY ID
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deleteClient(@PathVariable UUID id){
-        Optional<Client> clientOptional = service.findById(id);
+        Optional<Client> clientOptional = service.findClientById(id);
         if(clientOptional.isPresent()){
             service.deleteClientById(id);
             return ResponseEntity.status(HttpStatus.OK).body("Client has been deleted");
@@ -68,7 +68,7 @@ public class ClienteController {
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> putClient(@RequestParam  UUID id,
                                             @RequestBody @Valid ClientRecordDTO dto ){
-        Optional<Client>clientOptional = service.findById(id);
+        Optional<Client>clientOptional = service.findClientById(id);
         if (clientOptional.isPresent()){
             Client client = service.updateClient(id, dto);
             return ResponseEntity.status(HttpStatus.OK).body(client);

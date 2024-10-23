@@ -29,7 +29,7 @@ public class UserService {
 
     // return all users
     @Transactional
-    public List<User> findAll() {
+    public List<User> findAllUsers() {
         return repository.findAll();
     }
 

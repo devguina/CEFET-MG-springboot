@@ -51,6 +51,7 @@ public class CityService {
             City city = new City();
             BeanUtils.copyProperties(dto, city);
             city.setName(city.getName());
+            city.setState(city.getState());
             return repository.save(city);
         }
         throw new RuntimeException();

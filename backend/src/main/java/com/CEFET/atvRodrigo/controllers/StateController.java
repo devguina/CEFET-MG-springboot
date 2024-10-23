@@ -22,21 +22,21 @@ public class StateController {
     //GET ALL
     @GetMapping(value = "/")
     public ResponseEntity <List<State>> allStates(){
-        List<State> states = service.getAllStates();
+        List<State> states = service.findAllStates();
         return new ResponseEntity<>(states, HttpStatus.OK);
     }
 
     //GET BY NAME
     @GetMapping(value = "/name/{name}")
     public ResponseEntity<?> stateName(@PathVariable String name) {
-        List<State> states = service.findByName(name);
+        List<State> states = service.findStateByName(name);
         return new ResponseEntity<>(states, HttpStatus.OK);
     }
 
     //GET BY ID
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> getState(@PathVariable UUID id){
-        Optional<State> stateOptional = service.getState(id);
+        Optional<State> stateOptional = service.findStateById(id);
         if(stateOptional.isPresent()){
             return ResponseEntity.status(HttpStatus.OK).body(stateOptional);
         }
@@ -55,7 +55,7 @@ public class StateController {
     //DELETE BY ID
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> deleteState(@PathVariable UUID id){
-        Optional<State> stateOptional= service.getState(id);
+        Optional<State> stateOptional= service.findStateById(id);
         if(stateOptional.isPresent()){
             service.deleteState(id);
             return ResponseEntity.status(HttpStatus.OK).body("User has been deleted");
@@ -69,9 +69,9 @@ public class StateController {
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> putState(@PathVariable UUID id,
                                       @RequestBody StateRecordDTO dto){
-        Optional<State> stateOptional = service.getState(id);
+        Optional<State> stateOptional = service.findStateById(id);
         if (stateOptional.isPresent()){
-            State state = service.updatestate(id, dto);
+            State state = service.updateState(id, dto);
             return ResponseEntity.status(HttpStatus.OK).body(state);
         }
         else return ResponseEntity.status(HttpStatus.NOT_FOUND).body("State not found by id: "+id);

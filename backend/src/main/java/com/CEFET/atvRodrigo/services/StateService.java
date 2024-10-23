@@ -35,13 +35,13 @@ public class StateService {
 
     //GET ALL
     @Transactional
-    public List<State> getAllStates(){
+    public List<State> findAllStates(){
         return repository.findAll();
     }
 
     //GET ONE STATE by id
     @Transactional
-    public Optional<State> getState(UUID id){
+    public Optional<State> findStateById(UUID id){
         return repository.findById(id);
     }
 
@@ -53,7 +53,7 @@ public class StateService {
 
     //PUT STATE by Id
     @Transactional
-    public State updatestate(UUID id, StateRecordDTO dto){
+    public State updateState(UUID id, StateRecordDTO dto){
         Optional<State> stateOptional = repository.findById(id);
         if(stateOptional.isPresent()){
             State state = new State();
@@ -68,7 +68,7 @@ public class StateService {
     }
 
     @Transactional
-    public List<State> findByName(String name){
+    public List<State> findStateByName(String name){
         return  repository.findByName(name);
     }
 

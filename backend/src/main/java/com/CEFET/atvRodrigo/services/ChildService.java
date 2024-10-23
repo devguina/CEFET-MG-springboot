@@ -41,17 +41,19 @@ public class ChildService {
     }
 
     @Transactional
-    public void deleteChild(UUID id){
+    public void deleteChildById(UUID id){
         repository.deleteById(id);
     }
 
     @Transactional
-    public Child updateChild(UUID id, ChildRecordDTO dto){
+    public Child updateChildById(UUID id, ChildRecordDTO dto){
         Optional <Child> childOptional = repository.findById(id);
         if (childOptional.isPresent()){
             Child child = new Child();
             BeanUtils.copyProperties(dto, child);
             child.setName(child.getName());
+            child.setBirthday(child.getBirthday());
+            child.setClient(child.getClient());
             return repository.save(child);
         }
         throw new RuntimeException();

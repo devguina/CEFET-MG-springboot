@@ -43,7 +43,7 @@ public class ChildrenController {
     }
 
     @PostMapping(value = "/")
-    public ResponseEntity<Child> postChild(@RequestBody ChildRecordDTO dto){
+    public ResponseEntity<?> postChild(@RequestBody ChildRecordDTO dto){
         Child child = service.addChild(dto);
         return ResponseEntity.status(HttpStatus.OK).body(child);
     }
@@ -53,7 +53,7 @@ public class ChildrenController {
                                       @RequestBody @Valid ChildRecordDTO dto){
         Optional<Child> childOptional = service.findChildById(id);
         if(childOptional.isPresent()){
-            Child child = service.updateChild(id, dto);
+            Child child = service.updateChildById(id, dto);
             return ResponseEntity.status(HttpStatus.OK).body(child);
         }
         else {
