@@ -18,6 +18,13 @@ public class StateService {
     @Autowired
     private StateRepository repository;
 
+
+
+    public void StateService(String name) {
+        State state = new State();
+        state.setName(name);
+    }
+
     //POST
     @Transactional
     public State addState(StateRecordDTO dto){

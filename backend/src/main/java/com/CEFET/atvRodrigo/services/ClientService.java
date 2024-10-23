@@ -1,6 +1,7 @@
 package com.CEFET.atvRodrigo.services;
 
 import com.CEFET.atvRodrigo.RecordsDTO.ClientRecordDTO;
+import com.CEFET.atvRodrigo.models.City;
 import com.CEFET.atvRodrigo.models.Client;
 import com.CEFET.atvRodrigo.repositories.ClientRepository;
 import org.springframework.beans.BeanUtils;
@@ -33,10 +34,11 @@ public class ClientService {
     // find Client by name
     @Transactional
     public List<Client>findByName(String name){
-        return findByName(name);
+        return repository.findByName(name);
+
     }
 
-    //add Client by id
+    //add Client
     @Transactional
     public Client addClient(ClientRecordDTO dto){
         Client client = new Client();

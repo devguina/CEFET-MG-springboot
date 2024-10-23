@@ -10,5 +10,5 @@ public class AtvRodrigoApplication {
 		SpringApplication.run(AtvRodrigoApplication.class, args);
 	}
 /*TODO
-*  gerar script para popular entity state e ajustar as classes state e city e seus relacionamentos*/
+*  corrigir o controler ClientController*/
 }
