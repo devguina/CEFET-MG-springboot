@@ -1,6 +1,6 @@
 package com.CEFET.atvRodrigo.services;
 
-import com.CEFET.atvRodrigo.RecordsDTO.ChildRecordDTO;
+import com.CEFET.atvRodrigo.dto.ChildDTO;
 import com.CEFET.atvRodrigo.models.Child;
 import com.CEFET.atvRodrigo.repositories.ChildRepository;
 import org.springframework.beans.BeanUtils;
@@ -17,9 +17,11 @@ public class ChildService {
 
     @Autowired
     private ChildRepository repository;
+    @Autowired
+    private ClientService clientService;
 
     @Transactional
-    public Child addChild(ChildRecordDTO dto){
+    public Child addChild(ChildDTO dto){
         Child child = new Child();
         BeanUtils.copyProperties(dto, child);
         return repository.save(child);
@@ -36,7 +38,7 @@ public class ChildService {
     }
 
     @Transactional
-    public List<Child>findByName(String name){
+    public List<Child> findChildByName(String name){
         return repository.findByName(name);
     }
 
@@ -46,14 +48,13 @@ public class ChildService {
     }
 
     @Transactional
-    public Child updateChildById(UUID id, ChildRecordDTO dto){
+    public Child updateChildById(UUID id, ChildDTO dto){
         Optional <Child> childOptional = repository.findById(id);
         if (childOptional.isPresent()){
             Child child = new Child();
             BeanUtils.copyProperties(dto, child);
             child.setName(child.getName());
             child.setBirthday(child.getBirthday());
-            child.setClient(child.getClient());
             return repository.save(child);
         }
         throw new RuntimeException();

@@ -1,13 +1,11 @@
-package com.CEFET.atvRodrigo.DTO;
+package com.CEFET.atvRodrigo.dto;
 
 
 import com.CEFET.atvRodrigo.models.Client;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-import org.springframework.cglib.core.Local;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -17,9 +15,7 @@ import java.util.UUID;
 @Getter
 @ToString
 @EqualsAndHashCode
-@NoArgsConstructor
-@AllArgsConstructor
-public class ChildDto {
+public class ChildDTO {
 
     private UUID id;
 
@@ -35,6 +31,14 @@ public class ChildDto {
 
     @NotNull
     @NotBlank
-    private Client client;
+    private ClientDTO clientDTO;
 
+
+    public ChildDTO() {
+    }
+
+    // construtor para usar para atualziar o pai do filho sem precisar passar outros dados
+    public ChildDTO(ClientDTO clientDTO) {
+        clientDTO.setName(clientDTO.getName());
+    }
 }

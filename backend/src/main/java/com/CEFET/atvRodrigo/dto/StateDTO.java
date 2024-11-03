@@ -1,8 +1,6 @@
-package com.CEFET.atvRodrigo.DTO;
+package com.CEFET.atvRodrigo.dto;
 
-import com.CEFET.atvRodrigo.models.Client;
-import com.CEFET.atvRodrigo.models.State;
-import jakarta.persistence.*;
+import com.CEFET.atvRodrigo.models.City;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -17,19 +15,19 @@ import java.util.UUID;
 @EqualsAndHashCode
 @Getter
 @Setter
-public class CityDto {
+public class StateDTO {
 
     private UUID id;
 
-    @Size(max = 100)
     @NotBlank
     @NotNull
+    @Size(max = 100)
     private String name;
 
-    @Size(max = 40)
     @NotBlank
     @NotNull
-    private State state;
+    @Size(max = 2)
+    private String abbreviation;
 
-    private List<Client> client;
+    private List<City> city;
 }

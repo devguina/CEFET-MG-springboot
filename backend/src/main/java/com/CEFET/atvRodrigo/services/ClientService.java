@@ -1,6 +1,7 @@
 package com.CEFET.atvRodrigo.services;
 
-import com.CEFET.atvRodrigo.RecordsDTO.ClientRecordDTO;
+import com.CEFET.atvRodrigo.dto.ChildDTO;
+import com.CEFET.atvRodrigo.dto.ClientDTO;
 import com.CEFET.atvRodrigo.models.Client;
 import com.CEFET.atvRodrigo.repositories.ClientRepository;
 import org.springframework.beans.BeanUtils;
@@ -32,14 +33,14 @@ public class ClientService {
 
     // find Client by name
     @Transactional
-    public List<Client> findByClientByName(String name){
+    public List<Client> findClientByName(String name){
         return repository.findByName(name);
 
     }
 
     //add Client
     @Transactional
-    public Client addClient(ClientRecordDTO dto){
+    public Client addClient(ClientDTO dto){
         Client client = new Client();
         BeanUtils.copyProperties(dto, client);
         return repository.save(client);
@@ -53,7 +54,7 @@ public class ClientService {
 
     //put by id
     @Transactional
-    public Client updateClient(UUID id, ClientRecordDTO dto){
+    public Client updateClientById(UUID id, ClientDTO dto){
         Optional<Client>clientOptional = repository.findById(id);
         if (clientOptional.isPresent()){
            Client client = new Client();

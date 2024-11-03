@@ -1,6 +1,7 @@
 package com.CEFET.atvRodrigo.services;
 
-import com.CEFET.atvRodrigo.RecordsDTO.UserRecordDTO;
+import com.CEFET.atvRodrigo.dto.ChildDTO;
+import com.CEFET.atvRodrigo.dto.UserDTO;
 import com.CEFET.atvRodrigo.models.User;
 import com.CEFET.atvRodrigo.repositories.UserRepository;
 import org.springframework.beans.BeanUtils;
@@ -20,7 +21,7 @@ public class UserService {
 
     //add user
     @Transactional
-    public User addUser(UserRecordDTO dto) {
+    public User addUser(UserDTO dto) {
         User user = new User();
         BeanUtils.copyProperties(dto, user);
         user.setActive(true);
@@ -51,7 +52,7 @@ public class UserService {
     }
 
     // update user by id
-    public User updateUserById(UUID id, UserRecordDTO dto) {
+    public User updateUserById(UUID id, UserDTO dto) {
         Optional<User> userOptional = repository.findById(id);
         if (userOptional.isPresent()){
             User user1 = new User();

@@ -38,4 +38,8 @@ public class Client {
 
     @OneToMany(mappedBy = "client")
     private List<Child> children; //(indica que o cliente pode ter múltiplos filhos);
+
+    public Client(UUID id) {
+        this.id = id;
+    }
 }

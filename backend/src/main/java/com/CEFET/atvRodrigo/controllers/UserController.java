@@ -1,6 +1,6 @@
 package com.CEFET.atvRodrigo.controllers;
 
-import com.CEFET.atvRodrigo.RecordsDTO.UserRecordDTO;
+import com.CEFET.atvRodrigo.dto.UserDTO;
 import com.CEFET.atvRodrigo.models.User;
 import com.CEFET.atvRodrigo.services.UserService;
 import jakarta.validation.Valid;
@@ -22,7 +22,7 @@ public class UserController {
 
     //POST
     @PostMapping(value = "/")
-    public ResponseEntity<User> postUser(@RequestBody @Valid UserRecordDTO dto) {
+    public ResponseEntity<User> postUser(@RequestBody @Valid UserDTO dto) {
         User user = userService.addUser(dto);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
@@ -54,7 +54,7 @@ public class UserController {
     //PUT BY ID
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> putUser(@PathVariable UUID id,
-                                     @RequestBody @Valid UserRecordDTO dto) {
+                                     @RequestBody @Valid UserDTO dto) {
         User user = userService.updateUserById(id, dto);
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }

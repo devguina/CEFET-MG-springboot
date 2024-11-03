@@ -1,6 +1,7 @@
 package com.CEFET.atvRodrigo.services;
 
-import com.CEFET.atvRodrigo.RecordsDTO.CityRecordDTO;
+import com.CEFET.atvRodrigo.dto.ChildDTO;
+import com.CEFET.atvRodrigo.dto.CityDTO;
 import com.CEFET.atvRodrigo.models.City;
 import com.CEFET.atvRodrigo.repositories.CityRepository;
 import org.springframework.beans.BeanUtils;
@@ -18,7 +19,7 @@ public class CityService {
     private CityRepository repository;
 
     @Transactional
-    public City addCity(CityRecordDTO dto){
+    public City addCity(CityDTO dto){
         City city = new City();
         BeanUtils.copyProperties(dto, city);
         return repository.save(city);
@@ -35,17 +36,17 @@ public class CityService {
     }
 
     @Transactional
-    public List<City>findByName(String name){
+    public List<City>findCityByName(String name){
         return repository.findByName(name);
     }
 
     @Transactional
-    public void deleteCity(UUID id){
+    public void deleteCityById(UUID id){
         repository.deleteById(id);
     }
 
     @Transactional
-    public City updateCity(UUID id, CityRecordDTO dto){
+    public City updateCityById(UUID id, CityDTO dto){
         Optional <City> cityOptional = repository.findById(id);
         if (cityOptional.isPresent()){
             City city = new City();
@@ -56,4 +57,6 @@ public class CityService {
         }
         throw new RuntimeException();
     }
+
+
 }

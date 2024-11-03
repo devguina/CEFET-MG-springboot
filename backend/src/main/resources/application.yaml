@@ -25,3 +25,8 @@ spring:
     enabled: true  # Habilita o Flyway
     locations: classpath:db/migration  # Caminho onde estão os scripts de migração Flyway
     baseline-on-migrate: true  # Garante que o Flyway considera o estado inicial
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui-custom.html
+

@@ -1,6 +1,6 @@
 package com.CEFET.atvRodrigo.controllers;
 
-import com.CEFET.atvRodrigo.RecordsDTO.ClientRecordDTO;
+import com.CEFET.atvRodrigo.dto.ClientDTO;
 import com.CEFET.atvRodrigo.models.Client;
 import com.CEFET.atvRodrigo.services.ClientService;
 import jakarta.validation.Valid;
@@ -15,7 +15,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/client")
-public class ClienteController {
+public class ClientController {
 
     @Autowired
     private ClientService service;
@@ -30,7 +30,7 @@ public class ClienteController {
     //GET BY NAME
     @GetMapping(value = "/name/{name}")
     public ResponseEntity<?> getByName(@PathVariable String name){
-        List<Client> clientes = service.findByClientByName(name);
+        List<Client> clientes = service.findClientByName(name);
         return new ResponseEntity<>(clientes, HttpStatus.OK);
     }
 
@@ -46,7 +46,7 @@ public class ClienteController {
 
     //POST
     @PostMapping(value = "/")
-    public ResponseEntity<Client> postClient(@RequestBody @Valid ClientRecordDTO dto) {
+    public ResponseEntity<Client> postClient(@RequestBody @Valid ClientDTO dto) {
         Client client = service.addClient(dto);
         return ResponseEntity.status(HttpStatus.OK).body(client);
     }
@@ -67,10 +67,10 @@ public class ClienteController {
     //PUT BY ID
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> putClient(@RequestParam  UUID id,
-                                            @RequestBody @Valid ClientRecordDTO dto ){
+                                            @RequestBody @Valid ClientDTO dto ){
         Optional<Client>clientOptional = service.findClientById(id);
         if (clientOptional.isPresent()){
-            Client client = service.updateClient(id, dto);
+            Client client = service.updateClientById(id, dto);
             return ResponseEntity.status(HttpStatus.OK).body(client);
         }
         else{

@@ -1,6 +1,6 @@
 package com.CEFET.atvRodrigo.controllers;
 
-import com.CEFET.atvRodrigo.RecordsDTO.StateRecordDTO;
+import com.CEFET.atvRodrigo.dto.StateDTO;
 import com.CEFET.atvRodrigo.models.State;
 import com.CEFET.atvRodrigo.services.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +47,7 @@ public class StateController {
 
     //POST
     @PostMapping(value = "/")
-    public ResponseEntity<?> postState(@RequestBody StateRecordDTO dto){
+    public ResponseEntity<?> postState(@RequestBody StateDTO dto){
        State state = service.addState(dto);
         return ResponseEntity.status(HttpStatus.OK).body(state);
     }
@@ -57,7 +57,7 @@ public class StateController {
     public ResponseEntity<?> deleteState(@PathVariable UUID id){
         Optional<State> stateOptional= service.findStateById(id);
         if(stateOptional.isPresent()){
-            service.deleteState(id);
+            service.deleteStateById(id);
             return ResponseEntity.status(HttpStatus.OK).body("User has been deleted");
         }
         else {
@@ -68,10 +68,10 @@ public class StateController {
     //PUT BY ID
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> putState(@PathVariable UUID id,
-                                      @RequestBody StateRecordDTO dto){
+                                      @RequestBody StateDTO dto){
         Optional<State> stateOptional = service.findStateById(id);
         if (stateOptional.isPresent()){
-            State state = service.updateState(id, dto);
+            State state = service.updateStateById(id, dto);
             return ResponseEntity.status(HttpStatus.OK).body(state);
         }
         else return ResponseEntity.status(HttpStatus.NOT_FOUND).body("State not found by id: "+id);

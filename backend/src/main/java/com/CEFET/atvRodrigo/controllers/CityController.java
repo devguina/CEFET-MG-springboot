@@ -1,6 +1,6 @@
 package com.CEFET.atvRodrigo.controllers;
 
-import com.CEFET.atvRodrigo.RecordsDTO.CityRecordDTO;
+import com.CEFET.atvRodrigo.dto.CityDTO;
 import com.CEFET.atvRodrigo.models.City;
 import com.CEFET.atvRodrigo.services.CityService;
 import jakarta.validation.Valid;
@@ -38,22 +38,22 @@ public class CityController {
 
     @GetMapping(value = "/name/{name}")
     public ResponseEntity<?> getNameCity(@PathVariable String name){
-        List<City> CityList= service.findByName(name);
+        List<City> CityList= service.findCityByName(name);
         return ResponseEntity.status(HttpStatus.OK).body(CityList);
     }
 
     @PostMapping(value = "/")
-    public ResponseEntity<City> postCity(@RequestBody CityRecordDTO dto){
+    public ResponseEntity<City> postCity(@RequestBody CityDTO dto){
         City city = service.addCity(dto);
         return ResponseEntity.status(HttpStatus.OK).body(city);
     }
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> putCity(@RequestParam UUID id,
-                                      @RequestBody @Valid CityRecordDTO dto){
+                                      @RequestBody @Valid CityDTO dto){
         Optional<City> cityOptional = service.findCityById(id);
         if(cityOptional.isPresent()){
-            City city = service.updateCity(id, dto);
+            City city = service.updateCityById(id, dto);
             return ResponseEntity.status(HttpStatus.OK).body(city);
         }
         else {
